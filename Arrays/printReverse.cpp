@@ -7,6 +7,7 @@ void printReverse(int* arr, int size) {
     }
 }
 
+
 int main() {
 	int testCases;
 	cin >> testCases;
