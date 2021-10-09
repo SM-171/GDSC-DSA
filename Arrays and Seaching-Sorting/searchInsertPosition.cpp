@@ -1,10 +1,6 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 class Solution {
 public:
     int BinarySearch(vector<int>& nums, int first, int last, int target) {
-        
         int mid = (first + last) / 2;
         
         while (first <= last) {
@@ -16,25 +12,25 @@ public:
                 return BinarySearch(nums, mid + 1, last, target);
             }
         }
-        
         return -1;
     }
     
     
     int searchInsert(vector<int>& nums, int target) {
-        
-        if(target <= nums[0]) return 0;
+        if(target <= nums[0]) {
+            return 0;
+        }
         
         int size = nums.size();
-        int position = BinarySearch(nums, 0, size - 1, target);
+        int targetPosition = BinarySearch(nums, 0, size - 1, target);
         
-        if(position == -1) {
-            int count = 0;
-            for(int i = 0; i < size && nums[i] < target; i++) {
-                count++;
+        if(targetPosition == -1) {
+            targetPosition = 0;
+            while(targetPosition < size && nums[targetPosition] < target) {
+                targetPosition++;
             }
-            return count;
+            return targetPosition;
         }
-        return position;
+        return targetPosition;
     }
 };
