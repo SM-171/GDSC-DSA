@@ -6,16 +6,15 @@ using namespace std;
 class Solution {
 public:
     
-    void reverseString(vector<char>& s) {
-        if(s.size() == 1) {
-            cout << s[0];
-            return;
+    long long towerOfHanoi(int N, int from, int to, int aux) {
+        if(N == 0) {
+            return 0;
         }
         
-        char temp = s[s.size() - 1];
-        s.pop_back();
-        reverseString(s);
-        s.insert(s.begin(), temp);
-        cout << s[0];
+        int AB = towerOfHanoi(N - 1, from, aux, to);
+        cout << "move disk " << N << " from rod " << from << " to rod " << to << endl;
+        int BC = towerOfHanoi(N - 1, aux, to, from);
+        
+        return 1 + AB + BC;
     }
 };
